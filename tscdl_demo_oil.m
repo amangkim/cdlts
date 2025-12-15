@@ -1,11 +1,11 @@
-% tscdl_demo_google
+% tscdl_demo_oil
 % Cost function
 
 clear all
 
 
-Data = load ('google');
-DAT = Data.GOOG;
+Data = load ('oil');
+DAT = Data.OIL;
 
 
 
@@ -42,7 +42,7 @@ end
 
 %msevisual_ms
 [mse_min i_star] = min(MSE);
-delta_star = delta(i_star);
+delta_star = delta(i_star)
 MSE = mse_min
 RMSE = sqrt(mse_min)
 

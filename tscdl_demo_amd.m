@@ -1,11 +1,12 @@
-% tscdl_demo_google
+% tscdl_demo_amd
 % Cost function
 
 clear all
 
 
-Data = load ('google');
-DAT = Data.GOOG;
+Data = load ('AMD');
+DAT = Data.AMD;
+%DAT=DAT(1000:6218);
 
 
 

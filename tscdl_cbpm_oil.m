@@ -1,12 +1,10 @@
-% tscdl_demo_google
-% Cost function
+% tscdl_cbpm_oil
 
 clear all
 
 
-Data = load ('google');
-DAT = Data.GOOG;
-
+Data = load ('oil');
+DAT = Data.OIL;
 
 
 delta0 = 1;
@@ -21,7 +19,9 @@ f0 = DAT;
 f0_bar = abs(mean(DAT));
 delta_max = length(DAT);
 
-delta = [30:30:1500];
+step = 15; % Mimuitues
+delta = [step:step:delta_max/3];
+
 
 del_len = length(delta);
 MSE = [];
@@ -30,24 +30,25 @@ FRQ = [];
 
 for del_i = 1:del_len
     delta_ = delta(del_i);
+
     [Y1 Y2, mse0]= amgrefgenstockmin(f0,delta_);    
+
     frq = T0/delta_;
+    
     MSE = [MSE mse0];  
     FRQ = [FRQ frq];
-    cost = c1*frq + c2*mse0;
+    
+    cost = c1*frq + c2*mse0;%/f0_bar;
     COST = [COST cost];
        
 end
 
 
-%msevisual_ms
-[mse_min i_star] = min(MSE);
-delta_star = delta(i_star);
-MSE = mse_min
-RMSE = sqrt(mse_min)
+x = delta;
 
-%scale =0.4;
-%costvisual_ms
+y1 = FRQ; % smaller is better
+y2 = MSE/mean(DAT); % smaller is better
 
 
-[Y1 Y2, mse0]= amgrefgenstockmin(f0,delta_star,T0,1);
+
+cbpm_sibsib_ms
